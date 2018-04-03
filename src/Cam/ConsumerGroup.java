@@ -14,7 +14,7 @@ public class ConsumerGroup {
 	      String topic = "SimpleProducer";
 	      String group = "group1";
 	      Properties props = new Properties();
-	      props.put("bootstrap.servers", "localhost:9092");
+	      props.put("bootstrap.servers", "localhost:9093");
 	      props.put("group.id", group);
 	      props.put("enable.auto.commit", "true");
 	      props.put("auto.commit.interval.ms", "1000");
