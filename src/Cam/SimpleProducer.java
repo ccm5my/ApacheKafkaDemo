@@ -2,21 +2,20 @@ package Cam;
 
 import java.util.Properties;
 
+
 import org.apache.kafka.clients.producer.*;
 
 public class SimpleProducer {
 	public static void main(String[] args) throws Exception {
-		if(args.length==0) {
-			System.out.println("Enter topic name");
-		}
+		
 	//Assign topicName to string variable.
-	String topicName = "SimpleProducer2";
+	String topicName = "SimpleProducer";
 	
 	//create instance for properties to access producer configs.
 	Properties props = new Properties();
 	
 	//assign localhostId;
-	props.put("bootstrap.servers", "localhost:9092");
+	props.put("bootstrap.servers", "localhost:9093");
 	
 	//Set acknowledgements for producer requests
 	props.put("acks", "all");
@@ -41,7 +40,7 @@ public class SimpleProducer {
 	
 	Producer<String, String> producer = new KafkaProducer<>(props);
 	
-	for(int i = 0; i<10; i++)  {
+	for(int i = 0; i<=1; i++)  {
 		producer.send(new ProducerRecord<String,String>(topicName, Integer.toString(i), Integer.toString(i)));
 		System.out.println(i);
 	}
