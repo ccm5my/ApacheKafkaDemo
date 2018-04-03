@@ -9,13 +9,10 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 public class ConsumerGroup {
 	public static void main(String[] args) throws Exception {
-	      if(args.length < 2){
-	         System.out.println("Usage: consumer <topic> <groupname>");
-	         return;
-	      }
+
 	      
-	      String topic = args[0].toString();
-	      String group = args[1].toString();
+	      String topic = "SimpleProducer";
+	      String group = "group1";
 	      Properties props = new Properties();
 	      props.put("bootstrap.servers", "localhost:9092");
 	      props.put("group.id", group);
@@ -23,9 +20,9 @@ public class ConsumerGroup {
 	      props.put("auto.commit.interval.ms", "1000");
 	      props.put("session.timeout.ms", "30000");
 	      props.put("key.deserializer",          
-	         "org.apache.kafka.common.serializa-tion.StringDeserializer");
+	         "org.apache.kafka.common.serialization.StringDeserializer");
 	      props.put("value.deserializer", 
-	         "org.apache.kafka.common.serializa-tion.StringDeserializer");
+	         "org.apache.kafka.common.serialization.StringDeserializer");
 	      KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
 	      
 	      consumer.subscribe(Arrays.asList(topic));
